@@ -19,6 +19,7 @@ repos:
     hooks:
         - id: mypy
           additional_dependencies: [pydantic]  # add if use pydantic
+          exclude: tests
 -   repo: https://github.com/PyCQA/isort
     rev: 5.12.0
     hooks:
