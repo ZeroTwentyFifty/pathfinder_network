@@ -21,6 +21,11 @@ black = "^23.1.0"
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.pytest.ini_options]
+pythonpath = [
+  ".", "pathfinder_network",
+]
+
 [tool.isort]
 multi_line_output = 3
 include_trailing_comma = true
@@ -54,6 +59,8 @@ exclude = '''
 
 [tool.mypy]
 plugins = "pydantic.mypy"
+
+exclude = "tests"
 
 follow_imports = "silent"
 strict_optional = true
