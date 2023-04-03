@@ -632,6 +632,21 @@ files = [
 ]
 
 [[package]]
+name = "urnparse"
+version = "0.2.0"
+description = "Python library for generating and parsing and RFC 8141 compliant uniform resource names (URN)."
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "urnparse-0.2.0-py2.py3-none-any.whl", hash = "sha256:2130bbab3629a9d13f75b53f1300b9b24c423325cb0efe665ebc9eceb1a909fe"},
+    {file = "urnparse-0.2.0.tar.gz", hash = "sha256:e92cfae9290fff48eb934214f977d401846b21267a319ba21b561779d03a3125"},
+]
+
+[package.extras]
+tests = ["check-manifest", "isort", "pydocstyle", "pytest"]
+
+[[package]]
 name = "virtualenv"
 version = "20.20.0"
 description = "Virtual Python Environment builder"
@@ -655,4 +670,4 @@ test = ["covdefaults (>=2.2.2)", "coverage (>=7.1)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "ead8e2ee744042255ad2f78f0a660381be4486bc0baba1f5cb3de7e240bb6482"
+content-hash = "cee014fa1ef1d3be6a8d533d9d9787acf625c1e259a03fe10602cba863d66ddd"
