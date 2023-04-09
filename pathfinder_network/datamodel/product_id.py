@@ -1,4 +1,4 @@
-from urn import URN
+from pathfinder_network.datamodel.urn import URN
 
 
 class ProductId(URN):
