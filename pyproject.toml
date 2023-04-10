@@ -63,6 +63,7 @@ exclude = '''
 plugins = "pydantic.mypy"
 
 exclude = "tests"
+mypy_path = "pathfinder_network"
 
 follow_imports = "silent"
 strict_optional = true
