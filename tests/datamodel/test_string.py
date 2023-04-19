@@ -6,27 +6,27 @@ from pathfinder_network.datamodel.string import String
 
 def test_valid_string():
     # Test valid strings
-    s1 = String(value="Hello, World!")
-    assert str(s1) == "Hello, World!"
-    s2 = String(value="1234")
-    assert str(s2) == "1234"
-    s3 = String(value="🐍 is the best")
-    assert str(s3) == "🐍 is the best"
+    s1 = String(__root__="Hello, World!")
+    assert s1 == "Hello, World!"
+    s2 = String(__root__="1234")
+    assert s2 == "1234"
+    s3 = String(__root__="🐍 is the best")
+    assert s3 == "🐍 is the best"
 
 
 def test_empty_string():
-    empty_string = String(value="")
-    assert str(empty_string) == ""
+    empty_string = String(__root__="")
+    assert empty_string == ""
 
 
 def test_other_types():
-    s1 = String(value=123)
-    assert str(s1) == "123"
-    s2 = String(value=0.0001)
-    assert str(s2) == "0.0001"
+    s1 = String(__root__=123)
+    assert s1 == "123"
+    s2 = String(__root__=0.0001)
+    assert s2 == "0.0001"
 
 
 def test_none_string():
     # Test None string
     with raises(ValidationError):
-        String(value=None)
+        String(__root__=None)
