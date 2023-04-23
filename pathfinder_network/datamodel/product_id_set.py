@@ -13,9 +13,7 @@ class ProductIdSet(BaseModel):
     @validator("product_ids")
     def check_product_ids(cls, v: list[ProductId | str]) -> list[ProductId]:
         if len(v) < 1:
-            raise ValueError(
-                "ProductIdSet must contain at least one ProductId"
-            )
+            raise ValueError("ProductIdSet must contain at least one ProductId")
         validated_product_ids = []
         for item in v:
             if isinstance(item, str):

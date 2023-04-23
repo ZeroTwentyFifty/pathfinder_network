@@ -24,9 +24,7 @@ def test_valid_decimal():
     assert repr(d) == "Decimal(value=12345678901234567890.123456789)"
 
 
-@pytest.mark.parametrize(
-    "invalid_value", ["hello", None, [1, 2, 3], "not a number"]
-)
+@pytest.mark.parametrize("invalid_value", ["hello", None, [1, 2, 3], "not a number"])
 def test_invalid_decimal(invalid_value):
     with pytest.raises(ValidationError):
         Decimal(value=invalid_value)

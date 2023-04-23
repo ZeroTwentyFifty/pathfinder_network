@@ -13,9 +13,7 @@ class CompanyIdSet(BaseModel):
     @validator("company_ids")
     def check_company_ids(cls, v: list[CompanyId | str]) -> list[CompanyId]:
         if len(v) < 1:
-            raise ValueError(
-                "CompanyIdSet must contain at least one CompanyId"
-            )
+            raise ValueError("CompanyIdSet must contain at least one CompanyId")
         validated_company_ids = []
         for item in v:
             if isinstance(item, str):
