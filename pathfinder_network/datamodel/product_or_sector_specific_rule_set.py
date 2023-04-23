@@ -10,7 +10,7 @@ class ProductOrSectorSpecificRuleSet(BaseModel):
     A set of ProductOrSectorSpecificRules of size 1 or larger.
 
     Attributes:
-        rules (list[ProductOrSectorSpecificRule]): A list of ProductOrSectorSpecificRule objects.  # NOQA: E501
+        rules (list[ProductOrSectorSpecificRule]): A list of ProductOrSectorSpecificRule objects.
 
     Raises:
         ValueError: If the list of rules is empty.
@@ -24,6 +24,6 @@ class ProductOrSectorSpecificRuleSet(BaseModel):
     ) -> list[ProductOrSectorSpecificRule]:
         if len(v) < 1:
             raise ValueError(
-                "ProductOrSectorSpecificRuleSet must contain at least one ProductOrSectorSpecificRule"  # NOQA: E501
+                "ProductOrSectorSpecificRuleSet must contain at least one ProductOrSectorSpecificRule"
             )
         return v

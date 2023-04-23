@@ -12,9 +12,7 @@ def test_valid_cpc_code():
 
 def test_invalid_cpc_code():
     invalid_code = 99999
-    with pytest.raises(
-        ValueError, match="99999 is not a valid CPC code"
-    ) as exc:
+    with pytest.raises(ValueError, match="99999 is not a valid CPC code") as exc:
         CpcCode(code=invalid_code)
     assert str(invalid_code) in str(exc.value)
 
