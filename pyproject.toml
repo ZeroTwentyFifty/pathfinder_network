@@ -33,10 +33,9 @@ multi_line_output = 3
 include_trailing_comma = true
 force_grid_wrap = 0
 use_parentheses = true
-line_length = 79
+line_length = 88 # set to 88 for consistency with black default of 88 for line length
 
 [tool.black]
-line-length = 79
 target-version = ['py311']
 include = '\.pyi?$'
 exclude = '''
