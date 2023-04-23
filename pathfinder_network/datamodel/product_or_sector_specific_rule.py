@@ -14,11 +14,25 @@ from pathfinder_network.datamodel.product_or_sector_specific_rule_operator impor
 
 
 class ProductOrSectorSpecificRule(BaseModel):
-    operator: ProductOrSectorSpecificRuleOperator
-    ruleNames: NonEmptyStringVector
-    otherOperatorName: NonEmptyString | None = None
+    """
+    A rule specifying conditions for filtering data based on the product or sector.  # NOQA: E501
 
-    @validator("otherOperatorName", pre=True, always=True)
+    Attributes:
+        operator (ProductOrSectorSpecificRuleOperator): An operator representing the type of the rule.  # NOQA: E501
+        rule_names (NonEmptyStringVector): A set of non-empty string values representing the names of the rules.  # NOQA: E501
+        other_operator_name (Union[NonEmptyString, None]): A non-empty string representing the name of the rule, if the  # NOQA: E501
+                                                           operator is 'OTHER'.  # NOQA: E501
+
+    Raises:
+        ValueError: If other_operator_name is defined but the operator is not 'OTHER', or if other_operator_name is not  # NOQA: E501
+                    defined but the operator is 'OTHER'.
+    """
+
+    operator: ProductOrSectorSpecificRuleOperator
+    rule_names: NonEmptyStringVector
+    other_operator_name: NonEmptyString | None = None
+
+    @validator("other_operator_name", pre=True, always=True)
     def check_operator(
         cls,
         v: NonEmptyString | None,
@@ -36,10 +50,10 @@ class ProductOrSectorSpecificRule(BaseModel):
             and v is not None
         ):
             raise ValueError(
-                "otherOperatorName must be undefined when operator is not Other"  # NOQA: E501
+                "other_operator_name must be undefined when operator is not Other"  # NOQA: E501
             )
         if operator == ProductOrSectorSpecificRuleOperator.OTHER and v is None:
             raise ValueError(
-                "otherOperatorName is required when operator is Other"
+                "other_operator_name is required when operator is Other"
             )
         return v
