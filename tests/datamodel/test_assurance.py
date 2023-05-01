@@ -47,3 +47,17 @@ def test_valid_assurance():
     assurance = Assurance(assurance=True)
 
     assert assurance.assurance is True
+
+
+def test_valid_assurance_with_enums():
+    assurance = Assurance(
+        assurance=True,
+        coverage=AssuranceCoverage.corporate_level,
+        level=AssuranceLevel.limited,
+        boundary=AssuranceBoundary.gate_to_gate,
+    )
+
+    assert assurance.assurance is True
+    assert assurance.coverage == "corporate level"
+    assert assurance.level == "limited"
+    assert assurance.boundary == "Gate-to-Gate"
