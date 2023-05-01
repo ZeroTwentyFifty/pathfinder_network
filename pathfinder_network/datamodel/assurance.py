@@ -21,3 +21,15 @@ class AssuranceLevel(str, Enum):
 class AssuranceBoundary(str, Enum):
     gate_to_gate = "Gate-to-Gate"
     cradle_to_gate = "Cradle-to-Gate"
+
+
+class Assurance(BaseModel):
+    """
+    Data type Assurance contains the assurance in conformance with Pathfinder Framework chapter 5 and appendix B.
+
+    Attributes:
+    - assurance (bool): Binary indicator stating whether the PCF has been assured in line with
+    Pathfinder Framework requirements
+    """
+
+    assurance: bool

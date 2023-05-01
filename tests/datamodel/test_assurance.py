@@ -1,6 +1,7 @@
 import pytest
 
 from pathfinder_network.datamodel.assurance import (
+    Assurance,
     AssuranceBoundary,
     AssuranceCoverage,
     AssuranceLevel,
@@ -40,3 +41,9 @@ def test_level_enum(input_value, expected_output):
 )
 def test_boundary_enum(input_value, expected_output):
     assert AssuranceBoundary(input_value) == expected_output
+
+
+def test_valid_assurance():
+    assurance = Assurance(assurance=True)
+
+    assert assurance.assurance is True
