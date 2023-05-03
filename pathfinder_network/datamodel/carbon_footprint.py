@@ -39,6 +39,44 @@ class BiogenicAccountingMethodology(str, Enum):
 
 
 class CarbonFootprint(BaseModel):
+    """
+    Data type Assurance contains the assurance in conformance with Pathfinder Framework chapter 5 and appendix B.
+
+    Attributes:
+        declared_unit (DeclaredUnit): The unit of analysis of the product.
+        unitary_product_amount (Decimal): The amount of Declared Units contained within the product to which the PCF is referring to.
+            The value MUST be strictly greater than 0.
+        pcf_excluding_biogenic (Decimal): The product carbon footprint of the product excluding biogenic emissions.
+            The value MUST be calculated per declared unit with unit kg of CO2 equivalent per declared unit (kgCO2e / declaredUnit),
+            expressed as a decimal equal to or greater than zero.
+        pcf_including_biogenic (Decimal): If present, the product carbon footprint of the product including biogenic emissions.
+            The value MUST be calculated per declared unit with unit kg of CO2 equivalent per declared unit (kgCO2e / declaredUnit),
+            expressed as a decimal.
+            NOTE: the value of this property can be less than 0 (zero).
+        fossil_ghg_emissions (Decimal): The emissions from the combustion of fossil sources.
+            The value MUST be calculated per declared unit with unit kg of CO2 equivalent per declared unit (kgCO2e / declaredUnit),
+            expressed as a decimal equal to or greater than zero.
+        fossil_carbon_content (Decimal): The fossil carbon amount embodied in the product.
+            The value MUST be calculated per declared unit with unit kg of CO2 equivalent per declared unit (kgCO2e / declaredUnit),
+            expressed as a decimal equal to or greater than zero.
+        biogenic_carbon_content (Decimal): The biogenic carbon amount embodied in the product.
+            The value MUST be calculated per declared unit with unit kg of CO2 equivalent per declared unit (kgCO2e / declaredUnit),
+            expressed as a decimal equal to or greater than zero.
+        dluc_ghg_emissions (Decimal): If present, emissions resulting from recent (i.e., previous 20 years) carbon stock loss due to land conversion
+            directly on the area of land under consideration. The value of this property MUST include direct land use change (dLUC) where available,
+            otherwise statistical land use change (sLUC) can be used. The value MUST be calculated per declared unit with unit kg of CO2 equivalent
+            per declared unit (kgCO2e / declaredUnit), expressed as a decimal equal to or greater than zero.
+            See Pathfinder Framework (Appendix B) for details.
+        land_management_ghg_emissions (Decimal): If present, GHG emissions and removals associated with land-management-related changes, including
+            non-CO2 sources. The value MUST be calculated per declared unit with unit kg of CO2 equivalent per declared unit (kgCO2e / declaredUnit),
+            expressed as a decimal equal to or greater than zero.
+            NOTE: version 1 did not explicitly include non-CO2 sources. This is now included in the definition.
+        other_biogenic_ghg_emissions (Decimal): If present, all other biogenic GHG emissions associated with product manufacturing and transport
+            that are not included in dLUC (direct land use change) or landManagementGhgEmissions.
+            The value MUST be calculated per declared unit with unit kg of CO2 equivalent per declared unit (kgCO2e / declaredUnit),
+            expressed as a decimal equal to or greater than zero.
+    """
+
     declared_unit: DeclaredUnit
     unitary_product_amount: Decimal
     pcf_excluding_biogenic: Decimal
