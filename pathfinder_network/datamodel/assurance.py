@@ -35,7 +35,7 @@ class Assurance(BaseModel):
         - "product line" for product line
         - "PCF system" for PCF System
         - "product level" for product level
-        This property MAY be undefined only if the kind of assurance was not performed.
+        This property MAY be undefined if no assurance has taken place.
     - level (str): Level of assurance applicable to the PCF. Valid values are:
         - "limited" for limited assurance
         - "reasonable" for reasonable assurance
@@ -45,7 +45,7 @@ class Assurance(BaseModel):
         - "Cradle-to-Gate" for Cradle-to-Gate
         This property is optional.
     - providerName (str): The non-empty name of the independent third party engaged to undertake the assurance.
-        This property is required.
+        This property is optional.
     - completedAt (datetime): The date at which the assurance was completed. This property is optional.
     - standardName (str): Name of the standard against which the PCF was assured. This property is optional.
     - comments (str): Any additional comments that will clarify the interpretation of the assurance.
