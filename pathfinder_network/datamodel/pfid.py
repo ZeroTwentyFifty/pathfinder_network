@@ -1,17 +1,18 @@
-from uuid import UUID
+from uuid import UUID, uuid4
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class PfId(BaseModel):
-    id: UUID
+    __root__: UUID = Field(default_factory=uuid4)
 
     @classmethod
     def from_str(cls, id_str: str) -> "PfId":
-        return cls(id=UUID(id_str))
+        return cls(__root__=UUID(id_str))
 
-    def __str__(self) -> str:
-        return str(self.id)
-
-    def __repr__(self) -> str:
-        return f"PfId(id={str(self.id)})"
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, PfId):
+            return self.__root__ == other.__root__
+        elif isinstance(other, str):
+            return str(self.__root__) == other
+        return False
