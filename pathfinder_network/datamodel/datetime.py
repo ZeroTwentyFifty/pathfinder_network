@@ -20,8 +20,16 @@ class DateTime(BaseModel):
         else:
             return v
 
+    def __repr__(self) -> str:
+        return f"DateTime(value='{self.value.isoformat()}')"
+
     def __str__(self) -> str:
         return self.value.isoformat()
 
-    def __repr__(self) -> str:
-        return f"DateTime(value='{self.value.isoformat()}')"
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, DateTime):
+            return self.value == other.value
+        elif isinstance(other, str):
+            return self.value.isoformat() == other
+        else:
+            return NotImplemented
