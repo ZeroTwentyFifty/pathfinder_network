@@ -5,11 +5,25 @@ import pytest
 from pathfinder_network.datamodel.datetime import DateTime
 
 
-def test_valid_datetime():
-    dt = DateTime(value="2022-04-01T12:00:00Z")
-    assert str(dt) == "2022-04-01T12:00:00+00:00"
-    assert repr(dt) == "DateTime(value='2022-04-01T12:00:00+00:00')"
-    assert dt.value == datetime(2022, 4, 1, 12, 0, 0, tzinfo=timezone.utc)
+@pytest.fixture
+def valid_datetime():
+    return DateTime(value="2022-04-01T12:00:00Z")
+
+
+def test_datetime_str_method(valid_datetime):
+    assert str(valid_datetime) == "2022-04-01T12:00:00+00:00"
+
+
+def test_datetime_repr_method(valid_datetime):
+    assert repr(valid_datetime) == "DateTime(value='2022-04-01T12:00:00+00:00')"
+
+
+def test_datetime_value_attr_is_valid_datetime_base_type(valid_datetime):
+    assert valid_datetime.value == datetime(2022, 4, 1, 12, 0, 0, tzinfo=timezone.utc)
+
+
+def test_datetime_eq_method(valid_datetime):
+    assert valid_datetime == "2022-04-01T12:00:00+00:00"
 
 
 def test_invalid_datetime_format():
