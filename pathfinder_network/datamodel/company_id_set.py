@@ -6,6 +6,10 @@ from pathfinder_network.datamodel.company_id import CompanyId
 class CompanyIdSet(BaseModel):
     """
     A set of CompanyIds of size 1 or larger.
+
+    Attributes:
+        company_ids (list[CompanyId | str]): A list of CompanyIds or strings representing CompanyIds
+                                             of size 1 or larger.
     """
 
     company_ids: list[CompanyId | str]
@@ -30,3 +34,11 @@ class CompanyIdSet(BaseModel):
 
     def __repr__(self) -> str:
         return f"CompanyIdSet(company_ids={self.company_ids})"
+
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, CompanyIdSet):
+            return self.company_ids == other.company_ids
+        elif isinstance(other, list):
+            return [str(company_id) for company_id in self.company_ids] == other
+        else:
+            return NotImplemented
