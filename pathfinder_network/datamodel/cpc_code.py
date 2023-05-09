@@ -40,3 +40,11 @@ class CpcCode(BaseModel):
 
     def __repr__(self) -> str:
         return f"CpcCode(code={self.code}, descriptor={self.descriptor})"
+
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, self.__class__):
+            return self.code == other.code
+        elif isinstance(other, int):
+            return self.code == other
+        else:
+            return NotImplemented
