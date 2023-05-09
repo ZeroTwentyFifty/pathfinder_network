@@ -6,6 +6,10 @@ from pathfinder_network.datamodel.product_id import ProductId
 class ProductIdSet(BaseModel):
     """
     A set of ProductIds of size 1 or larger.
+
+    Attributes:
+        product_ids (list[ProductId | str]): A list of ProductIds or strings representing ProductIds
+                                             of size 1 or larger.
     """
 
     product_ids: list[ProductId | str]
@@ -30,3 +34,11 @@ class ProductIdSet(BaseModel):
 
     def __repr__(self) -> str:
         return f"ProductIdSet(product_ids={self.product_ids})"
+
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, ProductIdSet):
+            return self.product_ids == other.product_ids
+        elif isinstance(other, list):
+            return [str(product_id) for product_id in self.product_ids] == other
+        else:
+            return NotImplemented
