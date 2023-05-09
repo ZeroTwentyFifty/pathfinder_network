@@ -28,3 +28,10 @@ def test_repr_representation():
     descriptor = "Uranium and thorium ores and concentrates"
     cpc = CpcCode(code=code)
     assert repr(cpc) == f"CpcCode(code={code}, descriptor={descriptor})"
+
+
+def test_cpc_code_integer_comparison():
+    code = 13000
+    cpc = CpcCode(code=code)
+    assert cpc == 13000
+    assert cpc != 12000
