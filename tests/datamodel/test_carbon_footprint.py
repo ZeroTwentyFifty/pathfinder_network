@@ -38,26 +38,5 @@ def test_invalid_biogenic_accounting_methodology():
         BiogenicAccountingMethodology("invalid")
 
 
-def test_carbon_footprint_all_mandatory_fields():
-    cross_sectoral_standards = CrossSectoralStandardSet(
-        standards=[CrossSectoralStandard.ISO_STANDARD_14067]
-    )
-
-    carbon_footprint = CarbonFootprint(
-        declared_unit=DeclaredUnit.kilogram,
-        unitary_product_amount=Decimal(value=12),
-        pcf_excluding_biogenic=Decimal(value=35),
-        fossil_ghg_emissions=Decimal(value=100),
-        fossil_carbon_content=Decimal(value=65),
-        biogenic_carbon_content=Decimal(value=8),
-        characterization_factors=String(__root__="blah"),
-        cross_sectoral_standards_used=cross_sectoral_standards,
-        boundary_processes_description=String(__root__="bleep"),
-        reference_period_start=DateTime(value="2023-04-01T12:00:00Z"),
-        reference_period_end=DateTime(value="2024-04-01T12:00:00Z"),
-        exempted_emissions_percent=Percent(value=42),
-        exempted_emissions_description=String(__root__="hello"),
-        packaging_emissions_included=False,
-    )
-
-    assert carbon_footprint.declared_unit == "kilogram"
+def test_carbon_footprint_all_mandatory_fields(valid_carbon_footprint):
+    assert valid_carbon_footprint.declared_unit == "kilogram"
